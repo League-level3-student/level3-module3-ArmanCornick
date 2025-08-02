@@ -17,6 +17,26 @@ public class _01_RegularExpressionsIntro {
      * Code method below! 
      */
     String emailRemover(String message) {
-        return null;
+        StringBuilder news = new StringBuilder(message);
+        int start = 0;
+        int end = 0;
+        Boolean startFill = false;
+        Boolean endFill = false;
+        for(int i=0;i<message.length();i++) {
+        	if(message.charAt(i)=='@') {
+        		start = i;
+        		startFill = true;
+        	}
+        	if(message.charAt(i)=='.') {
+        		end = i+3;
+        		endFill = true;
+        	}
+        	if(endFill && startFill == true) {
+        		startFill = false;
+        		endFill = false;
+        		news.replace(start, end+1, "@mail.com");
+        	}
+        }
+        return news.toString();
     }
 }
